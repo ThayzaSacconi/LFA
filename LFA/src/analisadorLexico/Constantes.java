@@ -1,7 +1,8 @@
 package analisadorLexico;
 
 public interface Constantes {
-    enum Token { CARACTER, VAR, NUM, WHILE, FOR, IF, SWITCH, CASE, DO, OP_UN, OP_BIN, OP_UN_BIN, EOF, AP, FP, AC, FC, PT_VIRG, DOIS_PT, PT, IGUAL };
+    enum Token { CARACTER, VAR, NUM, WHILE, FOR, IF, SWITCH, CASE, DO, OP_UN, OP_BIN, OP_UN_BIN, EOF, AP, FP, AC, FC, PT_VIRG, DOIS_PT, PT, 
+                 IGUAL, VAZIOS, ASPA };
     
     String  CARACTER = "'abcdefghijklmnopqrstuvwxyz0123456789'",
             VAR = "abcdefghijklmnopqrstuvwxyz",
@@ -12,7 +13,8 @@ public interface Constantes {
             SWITCH = "switch",
             CASE = "case",
             DO = "do",
-            ASPA = "'";
+            ASPA = "'",
+            VAZIOS = "\r\n\t" ;
             //colocar aqui os operadores que usa junto &&, !=, <= etc. 
  
     char    ASTERISCO = '*',

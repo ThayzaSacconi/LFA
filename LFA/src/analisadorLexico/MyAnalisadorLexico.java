@@ -99,6 +99,14 @@ public class MyAnalisadorLexico extends AnalisadorLexico {
             leProxCaractere();
             q43();
         }
+        else if (this.proxCaractereIs(VAZIOS)) {
+            leProxCaractere();
+            q0();
+        }
+        else if (this.proxCaractere == EOF) {
+            leProxCaractere();
+            q46();
+        }
 	else {
             throw new ErroLexico(this.proxCaractere, CARACTER + VAR + NUM + WHILE + FOR + IF + SWITCH + CASE + DO);
 	}
@@ -122,10 +130,6 @@ public class MyAnalisadorLexico extends AnalisadorLexico {
             leProxCaractere();
             q3();
 	}
-	else if(this.proxCaractereIs(VAR)) {
-            leProxCaractere();
-            q29();
-	}
     }
 	
     public void q3() {
@@ -133,10 +137,6 @@ public class MyAnalisadorLexico extends AnalisadorLexico {
         if(this.proxCaractereIs(VAR)) {
             leProxCaractere();
             q4();
-	}
-	else if(this.proxCaractereIs(VAR)) {
-            leProxCaractere();
-            q29();
 	}
     }
     
@@ -146,10 +146,6 @@ public class MyAnalisadorLexico extends AnalisadorLexico {
             leProxCaractere();
             q5();
 	}
-        else if(this.proxCaractereIs(VAR)) {
-            leProxCaractere();
-            q29();
-        }
     }
     
     public void q5() { 
@@ -166,10 +162,6 @@ public class MyAnalisadorLexico extends AnalisadorLexico {
             leProxCaractere();
             q7();
 	}
-        else if(this.proxCaractereIs(VAR)) {
-            leProxCaractere();
-            q29();
-        }
     }
     
     public void q7() {
@@ -206,10 +198,6 @@ public class MyAnalisadorLexico extends AnalisadorLexico {
             leProxCaractere();
             q11();
 	}
-        else if(this.proxCaractereIs(VAR)) {
-            leProxCaractere();
-            q29();
-        }
     }
     
     public void q11() {
@@ -218,10 +206,6 @@ public class MyAnalisadorLexico extends AnalisadorLexico {
             leProxCaractere();
             q12();
 	}
-        else if(this.proxCaractereIs(VAR)) {
-            leProxCaractere();
-            q29();
-        }
     }
     
     public void q12() {
@@ -230,10 +214,6 @@ public class MyAnalisadorLexico extends AnalisadorLexico {
             leProxCaractere();
             q13();
 	}
-        else if(this.proxCaractereIs(VAR)) {
-            leProxCaractere();
-            q29();
-        }
     }
     
     public void q13() {
@@ -242,10 +222,6 @@ public class MyAnalisadorLexico extends AnalisadorLexico {
             leProxCaractere();
             q14();
 	}
-        else if(this.proxCaractereIs(VAR)) {
-            leProxCaractere();
-            q29();
-        }
     }
     
     public void q14() {
@@ -254,10 +230,6 @@ public class MyAnalisadorLexico extends AnalisadorLexico {
             leProxCaractere();
             q15();
 	}
-        else if(this.proxCaractereIs(VAR)) {
-            leProxCaractere();
-            q29();
-        }
     }
     
     public void q15() {
@@ -274,10 +246,6 @@ public class MyAnalisadorLexico extends AnalisadorLexico {
             leProxCaractere();
             q17();
 	}
-        else if(this.proxCaractereIs(VAR)) {
-            leProxCaractere();
-            q29();
-        }
     }
     
     public void q17() {
@@ -286,10 +254,6 @@ public class MyAnalisadorLexico extends AnalisadorLexico {
             leProxCaractere();
             q18();
 	}
-        else if(this.proxCaractereIs(VAR)) {
-            leProxCaractere();
-            q29();
-        }
     }
     
     public void q18() {
@@ -298,10 +262,6 @@ public class MyAnalisadorLexico extends AnalisadorLexico {
             leProxCaractere();
             q19();
 	}
-        else if(this.proxCaractereIs(VAR)) {
-            leProxCaractere();
-            q29();
-        }
     }
     
     public void q19() {
@@ -313,27 +273,19 @@ public class MyAnalisadorLexico extends AnalisadorLexico {
     }
     
     public void q20() {
-        this.tokenReconhecido = Token.VAR;
+        //this.tokenReconhecido = Token.VAR;
         if(this.proxCaractereIs(VAR)) {
             leProxCaractere();
             q21();
 	}
-        else if(this.proxCaractereIs(VAR)) {
-            leProxCaractere();
-            q29();
-        }
     }
     
     public void q21() {
-        this.tokenReconhecido = Token.VAR;
+        //this.tokenReconhecido = Token.VAR;
         if(this.proxCaractereIs(VAR)) {
             leProxCaractere();
             q22();
 	}
-        else if(this.proxCaractereIs(VAR)) {
-            leProxCaractere();
-            q29();
-        }
     }
     
     public void q22() {
@@ -396,6 +348,7 @@ public class MyAnalisadorLexico extends AnalisadorLexico {
     }
     
     public void q34() {
+        this.tokenReconhecido = Token.ASPA;
         if(this.proxCaractereIs(VAR) || this.proxCaractereIs(NUM)) {
             leProxCaractere();
             q35();
@@ -415,18 +368,18 @@ public class MyAnalisadorLexico extends AnalisadorLexico {
     
     public void q37() {
         this.tokenReconhecido = Token.NUM;
-        if​(this​.proxCaractereIs(NUM)) {
+        if(this​.proxCaractereIs(NUM)) {
             leProxCaractere();
             q37(); //na máquina, esse estado precisa ser final pra tirar o que sai de q0 direto pro q39
         }
-        else if​(this​.proxCaractere == PT) {
+        else if(this​.proxCaractere == PT) {
             leProxCaractere();
             q38();
         }
     }
     
     public void q38() {
-        if​(this​.proxCaractereIs(NUM)) {
+        if(this​.proxCaractereIs(NUM)) {
             leProxCaractere();
             q39();
         }
@@ -434,7 +387,7 @@ public class MyAnalisadorLexico extends AnalisadorLexico {
     
     public void q39() {
         this.tokenReconhecido = Token.NUM;
-        if​(this​.proxCaractereIs(NUM)) {
+        if(this​.proxCaractereIs(NUM)) {
             leProxCaractere();
             q39();
         }
@@ -445,7 +398,7 @@ public class MyAnalisadorLexico extends AnalisadorLexico {
     }
     
     public void q41() {
-        if​(this​.proxCaractere == BARRA_OU) {
+        if(this​.proxCaractere == BARRA_OU) {
             leProxCaractere();
             q42();
         }
@@ -456,7 +409,7 @@ public class MyAnalisadorLexico extends AnalisadorLexico {
     }
     
     public void q43() {
-        if​(this​.proxCaractere == IGUAL) {
+        if(this​.proxCaractere == IGUAL) {
             leProxCaractere();
             q44();
         }
@@ -468,5 +421,9 @@ public class MyAnalisadorLexico extends AnalisadorLexico {
     
     public void q45() {
         this.tokenReconhecido = Token.OP_BIN;
+    }
+    
+    public void q46() {
+        this.tokenReconhecido = Token.EOF;
     }
 }
