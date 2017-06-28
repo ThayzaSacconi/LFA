@@ -15,7 +15,7 @@ public class TesteAnalisadorLexico {
                     System.out.println(scanner.tokenReconhecido);
                 } while(scanner.tokenReconhecido != Constantes.Token.EOF); 
             
-            System.out.println("Análise lexica realizada com sucesso no arquivo "+scanner.nomeArquivoEntrada);
+            System.out.println("Análise lexica realizada com sucesso no arquivo " + scanner.nomeArquivoEntrada);
         } catch(ErroLexico e) {
             System.out.println("Erro léxico: "+e.toString());
         } catch(RuntimeException e) {

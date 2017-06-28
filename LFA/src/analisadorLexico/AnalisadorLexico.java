@@ -21,15 +21,13 @@ public class AnalisadorLexico extends Analisador {
             file.close();
             leProxCaractere();
         } catch (IOException e) {
-            throw new RuntimeException("Erro de leitura no arquivo "+_nomeArquivoEntrada);
+            throw new RuntimeException("Erro de leitura no arquivo " + _nomeArquivoEntrada);
         }
     }
-
-    // lê o próximo caractere do buffer. Se fim, retorna EOF
-    // avança o ponteiro de leitura 1 posição
-    public void leProxCaractere() {
+  
+    public void leProxCaractere() { // lê o próximo caractere do buffer. Se for o fim, retorna EOF
         try {
-            this.proxCaractere = this.entrada.charAt(this.posicao++);
+            this.proxCaractere = this.entrada.charAt(this.posicao++); // avança o ponteiro de leitura 1 posição
         } catch(IndexOutOfBoundsException e) {
             this.proxCaractere = EOF;
         }

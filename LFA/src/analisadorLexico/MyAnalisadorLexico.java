@@ -100,7 +100,7 @@ public class MyAnalisadorLexico extends AnalisadorLexico {
             q43();
         }
 	else {
-            throw new ErroLexico(this.proxCaractere, CARACTER+VAR+NUM+WHILE+FOR+IF+SWITCH+CASE+DO+ASPA);
+            throw new ErroLexico(this.proxCaractere, CARACTER + VAR + NUM + WHILE + FOR + IF + SWITCH + CASE + DO);
 	}
     }
     
@@ -387,7 +387,7 @@ public class MyAnalisadorLexico extends AnalisadorLexico {
     public void q32() {
         if(this.proxCaractere == COMERCIAL) {
             leProxCaractere();
-            q40;
+            q40();
         }
     }
     
@@ -398,14 +398,14 @@ public class MyAnalisadorLexico extends AnalisadorLexico {
     public void q34() {
         if(this.proxCaractereIs(VAR) || this.proxCaractereIs(NUM)) {
             leProxCaractere();
-            q35;
+            q35();
         }
     }
     
     public void q35() {
         if(this.proxCaractereIs(ASPA)) {
             leProxCaractere();
-            q36;
+            q36();
         }
     }
     

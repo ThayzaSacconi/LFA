@@ -13,7 +13,7 @@ public interface Constantes {
             CASE = "case",
             DO = "do",
             ASPA = "'";
-            
+            //colocar aqui os operadores que usa junto &&, !=, <= etc. 
  
     char    ASTERISCO = '*',
             BARRA = '/',
@@ -35,5 +35,5 @@ public interface Constantes {
             PT = '.',
             IGUAL = '=';
  
-    String NOME_DEFAULT_ARQUIVO_ENTRADA = "entrada.txt";
+    String NOME_DEFAULT_ARQUIVO_ENTRADA = "entradaTeste.txt";
 }

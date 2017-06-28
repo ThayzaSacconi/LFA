@@ -11,4 +11,3 @@ public abstract class Analisador implements Constantes {
         this.nomeArquivoEntrada = NOME_DEFAULT_ARQUIVO_ENTRADA;
     }
 }
-

@@ -10,6 +10,6 @@ public class ErroLexico extends RuntimeException {
     }
 
     public String toString() {
-        return "caractere encontrado: " + ((char)this.caractereEncontrado) + "\nera(m) esperado(s): " + this.caracteresEsperados;
+        return "Caractere encontrado: " + ((char)this.caractereEncontrado) + "\n Era(m) esperado(s): " + this.caracteresEsperados;
     }
 }
