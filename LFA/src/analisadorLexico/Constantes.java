@@ -15,7 +15,6 @@ public interface Constantes {
             DO = "do",
             ASPA = "'",
             VAZIOS = "\r\n\t" ;
-            //colocar aqui os operadores que usa junto &&, !=, <= etc. 
  
     char    ASTERISCO = '*',
             BARRA = '/',
