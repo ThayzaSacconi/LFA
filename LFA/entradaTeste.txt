@@ -1,16 +1,1 @@
-while
-for
-if
-case
-switch
-'a'
-||
-<=1
-3.2++
-+
--
-lfa
-LFA
-a--
-.01
-1.
+a=10;

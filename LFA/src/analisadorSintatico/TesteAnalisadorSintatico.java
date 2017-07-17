@@ -11,7 +11,7 @@ public class TesteAnalisadorSintatico {
 		throw new RuntimeException("esqueceu de escrever o nome do arquivo de entrada! \n" + 
                                            "No Eclipse insira em: Run - Open Run Dialog - Arguments");
 		parser = new MyAnalisadorSintatico(args[0]);
-		parser.inicio();
+		parser.programa();
 		System.out.println("Análise realizada com sucesso no arquivo "+ parser.nomeArquivoEntrada);
 	} catch(ErroLexico e) {
             System.out.println("Erro léxico: "+e.toString());
