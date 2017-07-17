@@ -12,7 +12,7 @@ public class TesteAnalisadorLexico {
                 // chama a máquina de Moore várias vezes até encontrar o fim de arquivo
                 do {
                     scanner.q0();
-                    System.out.println(scanner.tokenReconhecido);
+                    System.out.println(scanner.tokenReconhecido + "\t\t" + MyAnalisadorLexico.saida);
                 } while(scanner.tokenReconhecido != Constantes.Token.EOF); 
             
             System.out.println("Análise lexica realizada com sucesso no arquivo " + scanner.nomeArquivoEntrada);

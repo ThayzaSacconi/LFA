@@ -7,7 +7,7 @@ public class AnalisadorLexico extends Analisador {
     protected int linha = 1;  // linha atual do arquivo fonte
     protected StringBuffer entrada = new StringBuffer(); // armazena o conteúdo do arquivo
     protected int posicao = 0; // posição do caractere a ser lido na entrada  
-    protected Token tokenReconhecido; // último token lido
+    public Token tokenReconhecido; // último token lido
 
     // transfere o arquivo para o buffer ‘entrada’
     public AnalisadorLexico(String _nomeArquivoEntrada) {
