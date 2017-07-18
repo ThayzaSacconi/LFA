@@ -1,15 +1,28 @@
 package analisadorSintatico;
 import analisadorLexico.*;
 
+/**
+ *
+ * @author Thayza
+ */
+
 public class MyAnalisadorSintatico extends AnalisadorSintatico {
 	
+    /**
+     *
+     * @param _nomeArquivoEntrada
+     */
+    
     public MyAnalisadorSintatico(String _nomeArquivoEntrada) {
         super(_nomeArquivoEntrada);
     }
 
+    /**
+     *
+     */
     public void programa() {
 	if(proxTokenIs(Token.WHILE) || proxTokenIs(Token.IF) || proxTokenIs(Token.SWITCH) 
-        || proxTokenIs(Token.CASE) || proxTokenIs(Token.DO) || proxTokenIs(Token.FOR) || proxTokenIs(Token.VAR)) {
+        || proxTokenIs(Token.DO) || proxTokenIs(Token.FOR) || proxTokenIs(Token.VAR)) {
             comando(); 
         }
         else if(proxTokenIs(Token.EOF)) {
@@ -21,6 +34,9 @@ public class MyAnalisadorSintatico extends AnalisadorSintatico {
         }
     }
 	
+    /**
+     *
+     */
     public void comando() {
         if(proxTokenIs(Token.WHILE)) {
             funcaoWhile();
@@ -51,6 +67,7 @@ public class MyAnalisadorSintatico extends AnalisadorSintatico {
         }
         else if(proxTokenIs(Token.VAR)) {
             atribuicao();
+            reconhece(Token.PT_VIRG);
         }
         else {
             Token[] tokensEsperados = {Token.VAR, Token.NUM, Token.EOF};
@@ -58,8 +75,11 @@ public class MyAnalisadorSintatico extends AnalisadorSintatico {
         }
     }
     
+    /**
+     *
+     */
     public void exp() {
-        if(proxTokenIs(Token.OP_UN_BIN) || proxTokenIs(Token.OP_BIN)) {
+        if(proxTokenIs(Token.OP_UN_BIN) || proxTokenIs(Token.OP_UN)) {
             operador2();
             exp();
             R();
@@ -85,17 +105,22 @@ public class MyAnalisadorSintatico extends AnalisadorSintatico {
         }
     }
     
+    /**
+     *
+     */
     public void R() {
         if(proxTokenIs(Token.OP_UN_BIN) || proxTokenIs(Token.OP_BIN)) {
             operador1();
             exp();
             R();
-            reconhece(Token.PT_VIRG);
         }
         else if(proxTokenIs(Token.EOF))
-            ;
+            reconhece(Token.EOF);
     }
     
+    /**
+     *
+     */
     public void bloco() {
         if(proxTokenIs(Token.AC)) {
             reconhece(Token.AC);
@@ -108,6 +133,9 @@ public class MyAnalisadorSintatico extends AnalisadorSintatico {
         }
     }
     
+    /**
+     *
+     */
     public void funcaoWhile() {
         reconhece(Token.WHILE);
         reconhece(Token.AP);
@@ -116,6 +144,9 @@ public class MyAnalisadorSintatico extends AnalisadorSintatico {
         bloco();
     }
     
+    /**
+     *
+     */
     public void funcaoIf() {
         reconhece(Token.IF);
         reconhece(Token.AP);
@@ -124,6 +155,9 @@ public class MyAnalisadorSintatico extends AnalisadorSintatico {
         bloco();
     }
     
+    /**
+     *
+     */
     public void funcaoSwitch() {
         reconhece(Token.SWITCH);
         reconhece(Token.AP);
@@ -134,17 +168,38 @@ public class MyAnalisadorSintatico extends AnalisadorSintatico {
         reconhece(Token.FC);
     }
     
+    /**
+     *
+     */
     public void listaCase() {
-        funcaoCase();
-        reconhece(Token.EOF);
+        if(proxTokenIs(Token.EOF)){
+            reconhece(Token.EOF);
+            
+        }
+        else if(proxTokenIs(Token.CASE)){  
+            funcaoCase();
+            listaCase();
+        }
     }
     
+    /**
+     *
+     */
     public void identCase() {
-        reconhece(Token.NUM);
-        reconhece(Token.VAR);
-        reconhece(Token.CARACTER);
+        if (proxTokenIs(Token.NUM)){
+            reconhece(Token.NUM);
+        }
+        else if(proxTokenIs(Token.VAR)){
+            reconhece(Token.VAR);
+        }
+        else if(proxTokenIs(Token.CARACTER)){
+            reconhece(Token.CARACTER);
+        }
     }
     
+    /**
+     *
+     */
     public void funcaoCase() {
         reconhece(Token.CASE);
         identCase();
@@ -153,6 +208,9 @@ public class MyAnalisadorSintatico extends AnalisadorSintatico {
         listaCase();
     }
     
+    /**
+     *
+     */
     public void funcaoFor() {
         reconhece(Token.FOR);
         reconhece(Token.AP);
@@ -160,28 +218,56 @@ public class MyAnalisadorSintatico extends AnalisadorSintatico {
         reconhece(Token.PT_VIRG);
         exp();
         reconhece(Token.PT_VIRG);
-        atribuicao();
+        if(proxTokenIs(Token.IGUAL)) {
+            atribuicao();  
+        }
+        else if(proxTokenIs(Token.INCREMENTO)) {
+            reconhece(Token.INCREMENTO);
+        }
+        else if(proxTokenIs(Token.DECREMENTO)) {
+            reconhece(Token.DECREMENTO);
+        }
+        
         reconhece(Token.FP);
         bloco();
     }
     
+    /**
+     *
+     */
     public void atribuicao() {
         reconhece(Token.VAR);
         reconhece(Token.IGUAL);
         exp();
-        reconhece(Token.PT_VIRG);
     }
     
+    /**
+     *
+     */
     public void operador1() {
-        reconhece(Token.OP_UN_BIN);
-        reconhece(Token.OP_BIN);
+        if (proxTokenIs(Token.OP_UN_BIN)){
+            reconhece(Token.OP_UN_BIN);
+        }
+        else if (proxTokenIs(Token.OP_BIN)){
+            reconhece(Token.OP_BIN);
+        }
     }
 
+    /**
+     *
+     */
     public void operador2() {
-        reconhece(Token.OP_UN_BIN);
-        reconhece(Token.OP_UN);
+        if (proxTokenIs(Token.OP_UN_BIN)){
+            reconhece(Token.OP_UN_BIN);
+        }
+        else if (proxTokenIs(Token.OP_UN)){
+            reconhece(Token.OP_UN);
+        }
     }
     
+    /**
+     *
+     */
     public void funcaoDoWhile() {
         reconhece(Token.DO);
         reconhece(Token.AC);

@@ -67,10 +67,10 @@ public class MyAnalisadorLexico extends AnalisadorLexico {
             leProxCaractere();
             q30();
         }
-        else if(this.proxCaractere == OP_UN) {
+        /*else if(this.proxCaractere == OP_UN) {
             leProxCaractere();
             q31();
-        }
+        }*/
         else if((this.proxCaractere == MAIS) || (this.proxCaractere == MENOS)) {
             leProxCaractere();
             q33();
@@ -440,9 +440,9 @@ public class MyAnalisadorLexico extends AnalisadorLexico {
         this.tokenReconhecido = Token.IGUAL;
     }
     
-    public void q31() {
+    /*public void q31() {
         this.tokenReconhecido = Token.OP_UN;
-    }
+    }*/
     
     public void q32() {
         if(this.proxCaractere == COMERCIAL) {
@@ -549,6 +549,7 @@ public class MyAnalisadorLexico extends AnalisadorLexico {
     }
     
     public void q43() {
+        this.tokenReconhecido = Token.OP_BIN;
         if(this​.proxCaractere == IGUAL) {
             saida = saida + this.proxCaractere;
             leProxCaractere();
