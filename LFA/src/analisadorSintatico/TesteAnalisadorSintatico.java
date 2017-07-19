@@ -27,7 +27,7 @@ public class TesteAnalisadorSintatico {
                                            "No Eclipse insira em: Run - Open Run Dialog - Arguments");
 		parser = new MyAnalisadorSintatico(args[0]);
 		parser.programa();
-		System.out.println("Análise realizada com sucesso no arquivo " + parser.nomeArquivoEntrada);
+		//System.out.println("Análise realizada com sucesso no arquivo " + parser.nomeArquivoEntrada);
 	} catch(ErroLexico e) {
             System.out.println("Erro léxico: " + e.toString());
         } catch(ErroSintatico e) {

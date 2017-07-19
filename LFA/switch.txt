@@ -1,7 +1,0 @@
-switch(a){
-
-case'S':
-
-a=2;
-
-}

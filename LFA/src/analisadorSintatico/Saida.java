@@ -118,7 +118,7 @@ public class Saida extends javax.swing.JFrame {
             
             int retorno = file.showOpenDialog(this);
             
-            FileReader arq = new FileReader(file.getSelectedFile());
+            /*FileReader arq = new FileReader(file.getSelectedFile());
             BufferedReader lerArq = new BufferedReader(arq);
 
             String linha = "";
@@ -126,12 +126,13 @@ public class Saida extends javax.swing.JFrame {
             while ((linha = lerArq.readLine()) != null) {
                 texto += linha + "\n";
                 jTextArea1.setText(texto);
+                
             }
             
             arq.close();
-            lerArq.close();
+            lerArq.close(); */ 
             
-            //jTextField1.setText(file.getSelectedFile().getPath());
+            jTextArea1.setText(file.getSelectedFile().getPath());
             
             if(file.getSelectedFile().isFile()) {
                 jButton2.setEnabled(true);
