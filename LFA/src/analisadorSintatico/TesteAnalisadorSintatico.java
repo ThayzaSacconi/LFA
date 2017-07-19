@@ -19,7 +19,7 @@ public class TesteAnalisadorSintatico {
      */
     
     public static void main(String[] args) {
-        //new Saida().setVisible(true);
+        new Saida().setVisible(true);
         
 	try {
             if(args.length != 1)
